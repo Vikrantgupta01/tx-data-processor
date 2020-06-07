@@ -42,7 +42,7 @@ public class FixedWidthDataParser {
         txData.setProductGroupCode(DataParserUtil.getString(dataMap.get(TxDataFields.PRODUCT_GROUP_CODE)));
         txData.setExchangeCode(DataParserUtil.getString(dataMap.get(TxDataFields.EXCHANGE_CODE)));
         txData.setSymbol(DataParserUtil.getString(dataMap.get(TxDataFields.SYMBOL)));
-        txData.setExpirationDate(DataParserUtil.getDate(dataMap.get(TxDataFields.EXPIRATION_DATE),"YYYYMMDD"));
+        txData.setExpirationDate(DataParserUtil.getDate(dataMap.get(TxDataFields.EXPIRATION_DATE),"yyyyMMdd"));
         txData.setCurrencyCode(DataParserUtil.getString(dataMap.get(TxDataFields.CURRENCY_CODE)));
         txData.setMovementCode(DataParserUtil.getInteger(dataMap.get(TxDataFields.MOVEMENT_CODE)));
         txData.setBuySellCode(dataMap.get(TxDataFields.BUY_SELL_CODE));
@@ -63,7 +63,7 @@ public class FixedWidthDataParser {
         txData.setClearingDC(dataMap.get(TxDataFields.CLEARING_FEE_D_C));
         txData.setClearingFeeCurrCD(dataMap.get(TxDataFields.CLEARING_FEE_CUR_CODE));
 
-        txData.setTransactionDate(DataParserUtil.getDate(dataMap.get(TxDataFields.TRANSACTION_DATE),"YYYYMMDD"));
+        txData.setTransactionDate(DataParserUtil.getDate(dataMap.get(TxDataFields.TRANSACTION_DATE),"yyyyMMdd"));
         txData.setFutureReference(DataParserUtil.getInteger(dataMap.get(TxDataFields.FUTURE_REFERENCE)));
         txData.setTicketNumber(dataMap.get(TxDataFields.TICKET_NUMBER));
         txData.setExternalNumber(DataParserUtil.getInteger(dataMap.get(TxDataFields.EXTERNAL_NUMBER)));

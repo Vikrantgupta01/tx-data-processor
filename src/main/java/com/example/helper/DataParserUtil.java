@@ -1,5 +1,6 @@
 package com.example.helper;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,9 +33,30 @@ public class DataParserUtil {
 
     }
 
+    public static String getDateInString(Date date, String format) {
+        DateFormat dateFormat = new SimpleDateFormat(format);
+        return dateFormat.format(date);
+    }
+
     public static void main(String[] args) {
-       // System.out.println(Integer.parseInt("92500000000000".trim()));
-        System.out.println(getDouble("000092500000090",7));
+        // System.out.println(Integer.parseInt("92500000000000".trim()));
+        System.out.println(getDate("20100820", "yyyyMMdd"));
+    }
+
+
+    public static java.util.Date verifyDateInput(String input, String format) {
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        if (input != null) {
+            try {
+                java.util.Date ret = sdf.parse(input.trim());
+                if (sdf.format(ret).equals(input.trim())) {
+                    return ret;
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 
 
