@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,7 +37,7 @@ public class TxDataController {
     @Autowired
     private FixedWidthDataParser fileService;
 
-    @GetMapping("/report")
+    @GetMapping(path = "/report", produces = "multipart/form-data")
     public void getTxDataList(@RequestParam("date") String date, HttpServletResponse response) throws IOException {
         Date summaryDate = DataParserUtil.verifyDateInput(date, "yyyyMMdd");
         logger.info("Request to get summery report for date {}", date);
@@ -50,7 +51,7 @@ public class TxDataController {
         logger.info("successfully operation done !!");
     }
 
-    @PostMapping("/upload")
+    @PostMapping(path = "/upload", consumes = "multipart/form-data")
     public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
         String message = "Success";
         try {
