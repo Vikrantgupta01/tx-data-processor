@@ -30,6 +30,11 @@ public class TxDataService {
 
     public Map<ClientInformation, Map<ProductInformation, List<TxData>>> getClientProductTxDataList(Date date) {
         List<TxData> dataList = findByDate(date);
+        return getClientProductTxDataList(dataList);
+
+    }
+
+    public Map<ClientInformation, Map<ProductInformation, List<TxData>>> getClientProductTxDataList(List<TxData> dataList) {
         Map<ClientInformation, Map<ProductInformation, List<TxData>>> result = new HashMap<>();
         Map<ClientInformation, List<TxData>> clientTxData = dataList.stream()
                 .collect(Collectors.groupingBy(tx ->
@@ -46,8 +51,6 @@ public class TxDataService {
 
         }
         return result;
-
-
     }
 
     public void summaryReport(HttpServletResponse response, Map<ClientInformation, Map<ProductInformation, List<TxData>>> result) {
@@ -69,10 +72,7 @@ public class TxDataService {
                 Map<ProductInformation, List<TxData>> clientProductTxData = result.get(ci);
                 for (ProductInformation pi : clientProductTxData.keySet()) {
                     List<TxData> txData = clientProductTxData.get(pi);
-                    int Total_Transaction_Amount = 0;
-                    for (TxData txData1 : txData) {
-                        Total_Transaction_Amount += (txData1.getQuantityLong() - txData1.getQuantityShort());
-                    }
+
                     csvPrinter.printRecord(Arrays.asList(ci.getClientType(),
                             ci.getClientNumber(),
                             ci.getAccountNumber(),
@@ -81,7 +81,7 @@ public class TxDataService {
                             pi.getProductGroupCode(),
                             pi.getSymbol(),
                             DataParserUtil.getDateInString(pi.getExpirationDate(), "yyyyMMdd"),
-                            Total_Transaction_Amount));
+                            getTotalTransactionAmount(txData)));
                 }
 
             }
@@ -89,6 +89,14 @@ public class TxDataService {
             e.printStackTrace();
         }
 
+    }
+
+    public int getTotalTransactionAmount(List<TxData> txData) {
+        int totalTxAmt = 0;
+        for (TxData txData1 : txData) {
+            totalTxAmt += (txData1.getQuantityLong() - txData1.getQuantityShort());
+        }
+        return totalTxAmt;
     }
 
     @Transactional

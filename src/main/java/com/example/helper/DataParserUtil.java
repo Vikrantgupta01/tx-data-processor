@@ -38,12 +38,6 @@ public class DataParserUtil {
         return dateFormat.format(date);
     }
 
-    public static void main(String[] args) {
-        // System.out.println(Integer.parseInt("92500000000000".trim()));
-        System.out.println(getDate("20100820", "yyyyMMdd"));
-    }
-
-
     public static java.util.Date verifyDateInput(String input, String format) {
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         if (input != null) {
