@@ -1,7 +1,14 @@
 package com.example.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.Objects;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class ClientInformation {
 
     private String clientType;
@@ -16,37 +23,6 @@ public class ClientInformation {
         this.subAccountNumber = subAccountNumber;
     }
 
-    public String getClientType() {
-        return clientType;
-    }
-
-    public void setClientType(String clientType) {
-        this.clientType = clientType;
-    }
-
-    public int getClientNumber() {
-        return clientNumber;
-    }
-
-    public void setClientNumber(int clientNumber) {
-        this.clientNumber = clientNumber;
-    }
-
-    public int getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(int accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public int getSubAccountNumber() {
-        return subAccountNumber;
-    }
-
-    public void setSubAccountNumber(int subAccountNumber) {
-        this.subAccountNumber = subAccountNumber;
-    }
 
     @Override
     public boolean equals(Object o) {

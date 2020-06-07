@@ -3,6 +3,8 @@ package com.example.service;
 import com.example.entity.TxData;
 import com.example.helper.DataParserUtil;
 import com.example.helper.TxDataFields;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,6 +19,7 @@ import java.util.Map;
 @Service
 public class FixedWidthDataParser {
 
+    private static final Logger logger = LoggerFactory.getLogger(FixedWidthDataParser.class);
 
     public List<TxData> getParsedData(MultipartFile file) {
         List<TxData> txData = new ArrayList<>();
@@ -25,13 +28,16 @@ public class FixedWidthDataParser {
                     new BufferedReader(new InputStreamReader(file.getInputStream(), "UTF-8"));
             fileReader.lines().forEach(m -> txData.add(getTxData(m)));
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("error while parsing file {}",e.getMessage());
         }
         return txData;
     }
 
     public TxData getTxData(String rawData) {
+
+        logger.debug("Date going to get parsed {}",rawData);
         TxData txData = new TxData();
+
         Map<TxDataFields, String> dataMap = getDataMap(rawData);
         txData.setRecordCode(DataParserUtil.getInteger(dataMap.get(TxDataFields.RECORD_CODE)));
         txData.setClientType(DataParserUtil.getString(dataMap.get(TxDataFields.CLIENT_TYPE)));

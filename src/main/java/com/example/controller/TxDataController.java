@@ -7,6 +7,8 @@ import com.example.model.ClientInformation;
 import com.example.model.ProductInformation;
 import com.example.service.FixedWidthDataParser;
 import com.example.service.TxDataService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +27,9 @@ import java.util.Map;
 @RestController
 public class TxDataController {
 
+    private static final Logger logger = LoggerFactory.getLogger(TxDataController.class);
+
+
     @Autowired
     private TxDataService txDataService;
 
@@ -33,14 +38,16 @@ public class TxDataController {
 
     @GetMapping("/report")
     public void getTxDataList(@RequestParam("date") String date, HttpServletResponse response) throws IOException {
-        Date date1 = DataParserUtil.verifyDateInput(date, "yyyyMMdd");
-        if (date1 == null) {
+        Date summaryDate = DataParserUtil.verifyDateInput(date, "yyyyMMdd");
+        logger.info("Request to get summery report for date {}", date);
+        if (summaryDate == null) {
+            logger.error("request date is not valid, aborting operation");
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Bad Input data");
         }
         Map<ClientInformation, Map<ProductInformation, List<TxData>>> result =
-                txDataService.getClientProductTxDataList(date1);
+                txDataService.getClientProductTxDataList(summaryDate);
         txDataService.summaryReport(response, result);
-
+        logger.info("successfully operation done !!");
     }
 
     @PostMapping("/upload")

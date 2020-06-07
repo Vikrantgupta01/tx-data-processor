@@ -1,8 +1,15 @@
 package com.example.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.Date;
 import java.util.Objects;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class ProductInformation {
 
     private String productGroupCode;
@@ -14,38 +21,6 @@ public class ProductInformation {
         this.productGroupCode = productGroupCode;
         this.exchangeCode = exchangeCode;
         this.symbol = symbol;
-        this.expirationDate = expirationDate;
-    }
-
-    public String getProductGroupCode() {
-        return productGroupCode;
-    }
-
-    public void setProductGroupCode(String productGroupCode) {
-        this.productGroupCode = productGroupCode;
-    }
-
-    public String getExchangeCode() {
-        return exchangeCode;
-    }
-
-    public void setExchangeCode(String exchangeCode) {
-        this.exchangeCode = exchangeCode;
-    }
-
-    public String getSymbol() {
-        return symbol;
-    }
-
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
-    }
-
-    public Date getExpirationDate() {
-        return expirationDate;
-    }
-
-    public void setExpirationDate(Date expirationDate) {
         this.expirationDate = expirationDate;
     }
 

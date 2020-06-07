@@ -1,5 +1,13 @@
 package com.example.helper;
 
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
 public class ResponseMessage {
     private String message;
 
@@ -7,11 +15,4 @@ public class ResponseMessage {
         this.message = message;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }
