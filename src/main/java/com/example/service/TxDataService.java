@@ -7,8 +7,9 @@ import com.example.model.ProductInformation;
 import com.example.repository.TxDataRepository;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class TxDataService {
+    private static final Logger logger = LoggerFactory.getLogger(TxDataService.class);
 
     @Autowired
     private TxDataRepository txDataRepository;
@@ -30,6 +32,7 @@ public class TxDataService {
 
     public Map<ClientInformation, Map<ProductInformation, List<TxData>>> getClientProductTxDataList(Date date) {
         List<TxData> dataList = findByDate(date);
+        logger.info("Found {} records for the date {}", dataList.size(), date);
         return getClientProductTxDataList(dataList);
 
     }
@@ -55,11 +58,6 @@ public class TxDataService {
 
     public void summaryReport(HttpServletResponse response, Map<ClientInformation, Map<ProductInformation, List<TxData>>> result) {
         //set file name and content type
-        String filename = "report.csv";
-
-        response.setContentType("text/csv");
-        response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=\"" + filename + "\"");
 
         try {
 
@@ -101,7 +99,7 @@ public class TxDataService {
 
     @Transactional
     public void saveAll(List<TxData> txDataList) {
-        txDataList.stream().forEach(m -> txDataRepository.save(m));
+        txDataList.stream().filter(m -> m != null).forEach(m -> txDataRepository.save(m));
     }
 
 }

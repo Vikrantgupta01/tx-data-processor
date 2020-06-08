@@ -3,6 +3,7 @@ package com.example.service;
 import com.example.entity.TxData;
 import com.example.helper.DataParserUtil;
 import com.example.helper.TxDataFields;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -28,14 +29,19 @@ public class FixedWidthDataParser {
                     new BufferedReader(new InputStreamReader(file.getInputStream(), "UTF-8"));
             fileReader.lines().forEach(m -> txData.add(getTxData(m)));
         } catch (Exception e) {
-            logger.error("error while parsing file {}",e.getMessage());
+            logger.error("error while parsing file {}", e.getMessage());
         }
         return txData;
     }
 
     public TxData getTxData(String rawData) {
 
-        logger.debug("Date going to get parsed {}",rawData);
+        logger.debug("Date going to get parsed {}", rawData);
+        if (StringUtils.isEmpty(rawData) || rawData.length() < 176) {
+            logger.error("Invalid transaction data {}", rawData);
+            return null;
+        }
+
         TxData txData = new TxData();
 
         Map<TxDataFields, String> dataMap = getDataMap(rawData);
@@ -48,7 +54,7 @@ public class FixedWidthDataParser {
         txData.setProductGroupCode(DataParserUtil.getString(dataMap.get(TxDataFields.PRODUCT_GROUP_CODE)));
         txData.setExchangeCode(DataParserUtil.getString(dataMap.get(TxDataFields.EXCHANGE_CODE)));
         txData.setSymbol(DataParserUtil.getString(dataMap.get(TxDataFields.SYMBOL)));
-        txData.setExpirationDate(DataParserUtil.getDate(dataMap.get(TxDataFields.EXPIRATION_DATE),"yyyyMMdd"));
+        txData.setExpirationDate(DataParserUtil.getDate(dataMap.get(TxDataFields.EXPIRATION_DATE), "yyyyMMdd"));
         txData.setCurrencyCode(DataParserUtil.getString(dataMap.get(TxDataFields.CURRENCY_CODE)));
         txData.setMovementCode(DataParserUtil.getInteger(dataMap.get(TxDataFields.MOVEMENT_CODE)));
         txData.setBuySellCode(dataMap.get(TxDataFields.BUY_SELL_CODE));
@@ -57,23 +63,23 @@ public class FixedWidthDataParser {
         txData.setQuantityShort(DataParserUtil.getInteger(dataMap.get(TxDataFields.QUANTITY_SHORT)));
         txData.setQuantityShortSign(dataMap.get(TxDataFields.QUANTITY_SHORT_SIGN));
 
-        txData.setExchangeFee(DataParserUtil.getDouble(dataMap.get(TxDataFields.EXCHANGE_FEE),2));
+        txData.setExchangeFee(DataParserUtil.getDouble(dataMap.get(TxDataFields.EXCHANGE_FEE), 2));
         txData.setExchangeDC(dataMap.get(TxDataFields.EXCHANGE_FEE_D_C));
         txData.setExchangeFeeCurrCD(dataMap.get(TxDataFields.EXCHANGE_FEE_CURR_CD));
 
-        txData.setCommissionFee(DataParserUtil.getDouble(dataMap.get(TxDataFields.COMMISSION),2));
+        txData.setCommissionFee(DataParserUtil.getDouble(dataMap.get(TxDataFields.COMMISSION), 2));
         txData.setCommissionDC(dataMap.get(TxDataFields.COMMISSION_D_C));
         txData.setCommissionFeeCurrCD(dataMap.get(TxDataFields.COMMISSION_CUR_CODE));
 
-        txData.setClearingFee(DataParserUtil.getDouble(dataMap.get(TxDataFields.CLEARING_FEE),2));
+        txData.setClearingFee(DataParserUtil.getDouble(dataMap.get(TxDataFields.CLEARING_FEE), 2));
         txData.setClearingDC(dataMap.get(TxDataFields.CLEARING_FEE_D_C));
         txData.setClearingFeeCurrCD(dataMap.get(TxDataFields.CLEARING_FEE_CUR_CODE));
 
-        txData.setTransactionDate(DataParserUtil.getDate(dataMap.get(TxDataFields.TRANSACTION_DATE),"yyyyMMdd"));
+        txData.setTransactionDate(DataParserUtil.getDate(dataMap.get(TxDataFields.TRANSACTION_DATE), "yyyyMMdd"));
         txData.setFutureReference(DataParserUtil.getInteger(dataMap.get(TxDataFields.FUTURE_REFERENCE)));
         txData.setTicketNumber(dataMap.get(TxDataFields.TICKET_NUMBER));
         txData.setExternalNumber(DataParserUtil.getInteger(dataMap.get(TxDataFields.EXTERNAL_NUMBER)));
-        txData.setTransactionPrice(DataParserUtil.getDouble(dataMap.get(TxDataFields.TRANSACTION_PRICE),7));
+        txData.setTransactionPrice(DataParserUtil.getDouble(dataMap.get(TxDataFields.TRANSACTION_PRICE), 7));
         txData.setTraderInitials(dataMap.get(TxDataFields.TRADER_INITIALS).trim());
         txData.setOppositeTraderId(dataMap.get(TxDataFields.OPPOSITE_TRADER_ID).trim());
         txData.setOpenCloseCode(dataMap.get(TxDataFields.OPEN_CLOSE_CODE));
@@ -84,7 +90,7 @@ public class FixedWidthDataParser {
         Map<TxDataFields, String> dataMap = new HashMap<>();
         int pointer = 0;
         for (TxDataFields dataFields : TxDataFields.values()) {
-            dataMap.put(dataFields, rawData.substring(pointer, pointer+dataFields.getLength()));
+            dataMap.put(dataFields, rawData.substring(pointer, pointer + dataFields.getLength()));
             pointer += dataFields.getLength();
         }
         return dataMap;

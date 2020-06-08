@@ -10,8 +10,8 @@ import com.example.service.TxDataService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,6 +47,11 @@ public class TxDataController {
         }
         Map<ClientInformation, Map<ProductInformation, List<TxData>>> result =
                 txDataService.getClientProductTxDataList(summaryDate);
+        String filename = "report_" + date + ".csv";
+
+        response.setContentType("text/csv");
+        response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + filename + "\"");
         txDataService.summaryReport(response, result);
         logger.info("successfully operation done !!");
     }

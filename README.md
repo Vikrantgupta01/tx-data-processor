@@ -1,18 +1,22 @@
 # Spring Boot app & Postgresql & Docker compose
 
-## 1. Build app & Dockerfile
+### How to run app
+By this command 
+
+`./bin/run.sh`
+
+
+### OR
+
+#### 1. Build app & Dockerfile
 
 `mvn clean install`
 
-## 2. Run docker-compose
+#### 2. Run docker-compose
 
 `cd src/main/docker`
 
 `docker-compose up`
-
-###OR
-
-`./bin/run.sh`
 
 **What happens:**
 
@@ -21,7 +25,12 @@
 
 
 
-### Swagger UI as rest client
+
+
+
+### How to test app
+
+Swagger UI as rest client
 
 http://localhost:8080/swagger-ui.html
 
