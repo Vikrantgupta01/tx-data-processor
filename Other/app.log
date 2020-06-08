@@ -1,0 +1,52 @@
+2020-06-07 12:48:48,393 INFO com.example.DemoApplication [main] Starting DemoApplication v0.0.1-SNAPSHOT on 5f8bbb6a2403 with PID 17 (/app/app.jar started by root in /app)
+2020-06-07 12:48:48,402 INFO com.example.DemoApplication [main] No active profile set, falling back to default profiles: default
+2020-06-07 12:48:51,920 WARN org.hibernate.orm.deprecation [main] HHH90000014: Found use of deprecated [org.hibernate.id.SequenceGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2020-06-07 12:48:52,229 ERROR org.hibernate.tool.hbm2ddl.SchemaExport [main] HHH000389: Unsuccessful: drop sequence hibernate_sequence
+2020-06-07 12:48:52,230 ERROR org.hibernate.tool.hbm2ddl.SchemaExport [main] ERROR: sequence "hibernate_sequence" does not exist
+2020-06-07 12:48:54,091 INFO com.example.DemoApplication [main] Started DemoApplication in 6.201 seconds (JVM running for 6.757)
+2020-06-07 12:50:47,324 INFO com.example.controller.TxDataController [http-nio-8080-exec-6] Request to get summery report for date 20100819
+2020-06-07 12:50:47,706 INFO com.example.controller.TxDataController [http-nio-8080-exec-6] successfully operation done !!
+2020-06-07 12:51:27,614 INFO com.example.controller.TxDataController [http-nio-8080-exec-7] Request to get summery report for date 20100819
+2020-06-07 12:51:27,656 INFO com.example.controller.TxDataController [http-nio-8080-exec-7] successfully operation done !!
+2020-06-08 21:00:38,948 INFO com.example.DemoApplication [main] Starting DemoApplication v0.0.1-SNAPSHOT on f52dadc47398 with PID 16 (/app/app.jar started by root in /app)
+2020-06-08 21:00:38,962 INFO com.example.DemoApplication [main] No active profile set, falling back to default profiles: default
+2020-06-08 21:00:43,135 WARN org.hibernate.orm.deprecation [main] HHH90000014: Found use of deprecated [org.hibernate.id.SequenceGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2020-06-08 21:00:43,419 ERROR org.hibernate.tool.hbm2ddl.SchemaExport [main] HHH000389: Unsuccessful: drop sequence hibernate_sequence
+2020-06-08 21:00:43,420 ERROR org.hibernate.tool.hbm2ddl.SchemaExport [main] ERROR: sequence "hibernate_sequence" does not exist
+2020-06-08 21:00:45,665 INFO com.example.DemoApplication [main] Started DemoApplication in 7.278 seconds (JVM running for 8.113)
+2020-06-08 21:02:36,805 INFO com.example.DemoApplication [main] Starting DemoApplication v0.0.1-SNAPSHOT on e538d4f75d83 with PID 16 (/app/app.jar started by root in /app)
+2020-06-08 21:02:36,809 INFO com.example.DemoApplication [main] No active profile set, falling back to default profiles: default
+2020-06-08 21:02:40,521 WARN org.hibernate.orm.deprecation [main] HHH90000014: Found use of deprecated [org.hibernate.id.SequenceGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2020-06-08 21:02:40,802 ERROR org.hibernate.tool.hbm2ddl.SchemaExport [main] HHH000389: Unsuccessful: drop sequence hibernate_sequence
+2020-06-08 21:02:40,802 ERROR org.hibernate.tool.hbm2ddl.SchemaExport [main] ERROR: sequence "hibernate_sequence" does not exist
+2020-06-08 21:02:43,207 INFO com.example.DemoApplication [main] Started DemoApplication in 6.82 seconds (JVM running for 7.448)
+2020-06-08 21:05:09,690 INFO com.example.DemoApplication [main] Starting DemoApplication v0.0.1-SNAPSHOT on cab9b011faef with PID 17 (/app/app.jar started by root in /app)
+2020-06-08 21:05:09,695 INFO com.example.DemoApplication [main] No active profile set, falling back to default profiles: default
+2020-06-08 21:05:13,345 WARN org.hibernate.orm.deprecation [main] HHH90000014: Found use of deprecated [org.hibernate.id.SequenceGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2020-06-08 21:05:13,598 ERROR org.hibernate.tool.hbm2ddl.SchemaExport [main] HHH000389: Unsuccessful: drop sequence hibernate_sequence
+2020-06-08 21:05:13,599 ERROR org.hibernate.tool.hbm2ddl.SchemaExport [main] ERROR: sequence "hibernate_sequence" does not exist
+2020-06-08 21:05:15,397 INFO com.example.DemoApplication [main] Started DemoApplication in 6.18 seconds (JVM running for 6.684)
+2020-06-08 21:06:41,018 INFO com.example.DemoApplication [main] Starting DemoApplication v0.0.1-SNAPSHOT on 5229a9fc0029 with PID 15 (/app/app.jar started by root in /app)
+2020-06-08 21:06:41,022 INFO com.example.DemoApplication [main] No active profile set, falling back to default profiles: default
+2020-06-08 21:06:44,449 WARN org.hibernate.orm.deprecation [main] HHH90000014: Found use of deprecated [org.hibernate.id.SequenceGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2020-06-08 21:06:44,723 ERROR org.hibernate.tool.hbm2ddl.SchemaExport [main] HHH000389: Unsuccessful: drop sequence hibernate_sequence
+2020-06-08 21:06:44,724 ERROR org.hibernate.tool.hbm2ddl.SchemaExport [main] ERROR: sequence "hibernate_sequence" does not exist
+2020-06-08 21:06:46,586 INFO com.example.DemoApplication [main] Started DemoApplication in 6.131 seconds (JVM running for 6.838)
+2020-06-08 21:08:16,095 INFO com.example.controller.TxDataController [http-nio-8080-exec-5] Request to get summery report for date 20100819
+2020-06-08 21:08:16,291 INFO com.example.service.TxDataService [http-nio-8080-exec-5] Found 0 records for the date Thu Aug 19 00:00:00 UTC 2010
+2020-06-08 21:08:16,299 INFO com.example.controller.TxDataController [http-nio-8080-exec-5] successfully operation done !!
+2020-06-08 21:10:27,999 INFO com.example.controller.TxDataController [http-nio-8080-exec-7] Request to get summery report for date 20100819
+2020-06-08 21:10:28,005 INFO com.example.service.TxDataService [http-nio-8080-exec-7] Found 0 records for the date Thu Aug 19 00:00:00 UTC 2010
+2020-06-08 21:10:28,006 INFO com.example.controller.TxDataController [http-nio-8080-exec-7] successfully operation done !!
+2020-06-08 21:10:49,314 INFO com.example.controller.TxDataController [http-nio-8080-exec-9] Request to get summery report for date 20100819
+2020-06-08 21:10:49,316 INFO com.example.service.TxDataService [http-nio-8080-exec-9] Found 0 records for the date Thu Aug 19 00:00:00 UTC 2010
+2020-06-08 21:10:49,317 INFO com.example.controller.TxDataController [http-nio-8080-exec-9] successfully operation done !!
+2020-06-08 21:12:16,361 INFO com.example.DemoApplication [main] Starting DemoApplication v0.0.1-SNAPSHOT on 88bda1a817f7 with PID 16 (/app/app.jar started by root in /app)
+2020-06-08 21:12:16,372 INFO com.example.DemoApplication [main] No active profile set, falling back to default profiles: default
+2020-06-08 21:12:20,144 WARN org.hibernate.orm.deprecation [main] HHH90000014: Found use of deprecated [org.hibernate.id.SequenceGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2020-06-08 21:12:20,421 ERROR org.hibernate.tool.hbm2ddl.SchemaExport [main] HHH000389: Unsuccessful: drop sequence hibernate_sequence
+2020-06-08 21:12:20,421 ERROR org.hibernate.tool.hbm2ddl.SchemaExport [main] ERROR: sequence "hibernate_sequence" does not exist
+2020-06-08 21:12:22,401 INFO com.example.DemoApplication [main] Started DemoApplication in 6.505 seconds (JVM running for 6.995)
+2020-06-08 21:13:25,415 INFO com.example.controller.TxDataController [http-nio-8080-exec-1] Request to get summery report for date 20100819
+2020-06-08 21:13:25,773 INFO com.example.service.TxDataService [http-nio-8080-exec-1] Found 511 records for the date Thu Aug 19 00:00:00 UTC 2010
+2020-06-08 21:13:25,788 INFO com.example.controller.TxDataController [http-nio-8080-exec-1] successfully operation done !!
